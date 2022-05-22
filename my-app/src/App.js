@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { RenderAfterNavermapsLoaded, NaverMap } from "react-naver-maps";
+function NaverMapComponent() {
+  //const id = this.props.itemData.id;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NaverMap
+      mapDivId={"react-naver-map"}
+      style={{ width: "100%", height: "100vh" }}
+      defaultCenter={{ lat: 37.554722, lng: 126.970833 }}
+      defaultZoom={10}
+    />
   );
 }
-
+function App() {
+  return (
+    <RenderAfterNavermapsLoaded
+      ncpClientId={"iynt9ev5fu"}
+      error={<p>Maps Load Error</p>}
+      loading={<p>Maps Loading...</p>}
+    >
+      <NaverMapComponent />
+    </RenderAfterNavermapsLoaded>
+  );
+}
 export default App;
