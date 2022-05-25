@@ -21,7 +21,30 @@ $(document).ready(function () {
   });
 
   $("#seoulSubwayMap")[0].addEventListener("load", function () {
-    obj = svgPanZoom("#seoulSubwayMap");
+    //obj = svgPanZoom("#seoulSubwayMap");
+    obj = svgPanZoom("#seoulSubwayMap", {
+      viewportSelector: ".svg-pan-zoom_viewport",
+      panEnabled: true,
+      controlIconsEnabled: false,
+      zoomEnabled: true,
+      dblClickZoomEnabled: true,
+      mouseWheelZoomEnabled: true,
+      preventMouseEventsDefault: true,
+      zoomScaleSensitivity: 0.75,
+      minZoom: 0.5,
+      maxZoom: 10,
+      fit: true,
+      contain: false,
+      center: true,
+      refreshRate: "auto",
+      beforeZoom: function () {},
+      onZoom: function () {},
+      beforePan: function () {},
+      onPan: function () {},
+      onUpdatedCTM: function () {},
+
+      eventsListenerElement: null,
+    });
 
     obj.zoomAtPointBy(0, { x: $("#mainViewContainer").width() / 2, y: 0 });
 
