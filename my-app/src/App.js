@@ -1,5 +1,7 @@
 import React from "react";
 import { RenderAfterNavermapsLoaded, NaverMap } from "react-naver-maps";
+import Template from "./";
+
 function NaverMapComponent() {
   //const id = this.props.itemData.id;
   return (
@@ -13,13 +15,16 @@ function NaverMapComponent() {
 }
 function App() {
   return (
-    <RenderAfterNavermapsLoaded
-      ncpClientId={"iynt9ev5fu"}
-      error={<p>Maps Load Error</p>}
-      loading={<p>Maps Loading...</p>}
-    >
-      <NaverMapComponent />
-    </RenderAfterNavermapsLoaded>
+    <>
+      {/* <RenderAfterNavermapsLoaded
+        ncpClientId={"iynt9ev5fu"}
+        error={<p>Maps Load Error</p>}
+        loading={<p>Maps Loading...</p>}
+      >
+        <NaverMapComponent />
+      </RenderAfterNavermapsLoaded> */}
+      <iframe src={"http://127.0.0.1:5500/SeoulSubwayMap-master/index.html"} />
+    </>
   );
 }
 export default App;
