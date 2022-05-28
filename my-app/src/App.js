@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap } from "react-naver-maps";
-import MetroMap from "./js/metro-map";
 
+import MetroMap from "./metro-map/metro-map";
 function NaverMapComponent() {
   //const id = this.props.itemData.id;
   return (
@@ -19,7 +19,7 @@ function App() {
   const [station, setStation] = useState("");
   const childToParent = (childData) => {
     setStation(childData);
-    console.log("AA", childData);
+    console.log("STATION", childData);
   };
 
   return (
@@ -32,6 +32,7 @@ function App() {
         <NaverMapComponent />
       </RenderAfterNavermapsLoaded> */}
       <MetroMap childToParent={childToParent} />
+      {/* <MetroMapComp /> */}
     </>
   );
 }
