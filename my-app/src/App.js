@@ -1,6 +1,7 @@
 import React from "react";
+import { useState } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap } from "react-naver-maps";
-import Template from "./";
+import MetroMap from "./js/metro-map";
 
 function NaverMapComponent() {
   //const id = this.props.itemData.id;
@@ -13,7 +14,14 @@ function NaverMapComponent() {
     />
   );
 }
+
 function App() {
+  const [station, setStation] = useState("");
+  const childToParent = (childData) => {
+    setStation(childData);
+    console.log("AA", childData);
+  };
+
   return (
     <>
       {/* <RenderAfterNavermapsLoaded
@@ -23,7 +31,7 @@ function App() {
       >
         <NaverMapComponent />
       </RenderAfterNavermapsLoaded> */}
-      <iframe src={"http://127.0.0.1:5500/SeoulSubwayMap-master/index.html"} />
+      <MetroMap childToParent={childToParent} />
     </>
   );
 }
