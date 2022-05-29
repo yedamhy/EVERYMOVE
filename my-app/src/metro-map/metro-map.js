@@ -10,6 +10,7 @@ class MetroMap extends React.Component {
 
     let station;
     let obj;
+    let beforeClickedElement;
     $(document).ready(function () {
       $("#seoulSubwayMap")[0].addEventListener("load", function () {
         console.log(document);
@@ -42,6 +43,10 @@ class MetroMap extends React.Component {
             station = $(clickedElement).text();
             childToParent(station);
             console.log("click", clickedElement, svgDoc);
+            if (beforeClickedElement !== undefined) {
+              beforeClickedElement.style.fontSize = "20px";
+            }
+            beforeClickedElement = clickedElement;
           }
         };
       });
