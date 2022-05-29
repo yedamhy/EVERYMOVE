@@ -14,3 +14,7 @@ Add Metro Map
   - Source #2: https://github.com/gogahyun/seoulMetroMiddle
   - Now supports zooming & get station name by clicking!
   - JQuery used 
+
+[2022-05-29 21:43] 
+Fix a Bug 
+  - Clicked element(text) didn't get backed to its original scale after another element is clicked 
