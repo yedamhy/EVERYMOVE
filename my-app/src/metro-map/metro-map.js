@@ -13,7 +13,7 @@ class MetroMap extends React.Component {
     let beforeClickedElement;
     $(document).ready(function () {
       $("#seoulSubwayMap")[0].addEventListener("load", function () {
-        console.log(document);
+        //console.log(document);
         obj = svgPanZoom("#seoulSubwayMap");
         obj.setZoomScaleSensitivity(1);
         let svgDoc = $("#seoulSubwayMap")[0].getSVGDocument();
