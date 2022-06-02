@@ -18,3 +18,7 @@ Add Metro Map
 [2022-05-29 21:43] 
 Fix a Bug 
   - Clicked element(text) didn't get backed to its original scale after another element is clicked 
+
+[2022-06-02 23:43]
+Clean up & Synchronization 
+  - :sparkles::sparkles::sparkles::sparkles::sparkles:
