@@ -49,7 +49,7 @@ function NaverMapComponent({ props }) {
           lng: item.x,
           lat: item.y,
         });
-        setZoom(16);
+        setZoom(17);
       }
     );
   };
@@ -83,8 +83,6 @@ function App() {
 
   const childToParent = (childData) => {
     setStation(childData);
-    console.log("STATION", childData);
-    console.log(address[childData]);
     searchAddressToCoordinate(address[childData]);
   };
   return (
