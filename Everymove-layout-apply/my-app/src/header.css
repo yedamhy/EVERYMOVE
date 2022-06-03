@@ -1,0 +1,49 @@
+.header{
+    height: 57px;
+    display:block;
+    align-items: center;
+    background-color: rgb(57, 196, 150);
+
+}
+.cont{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: rgb(57, 196, 150);
+}
+#logo{
+    position: relative;
+    top:10px;
+    left: 20px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(57, 196, 150);
+}
+#topMenu{
+    display: flex;
+}
+#topMenu ul li{
+    list-style: none;
+    color: white;
+    background-color: rgb(57, 196, 150);
+    float: left;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+}
+#topMenu .menuLink{
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 150px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px 10px 10px 10px;
+}
+#topMenu .menuLink:hover{
+    color: white;
+    background-color: rgb(28, 94, 72);
+}
