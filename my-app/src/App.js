@@ -4,6 +4,9 @@ import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
 import MetroMap from "./metro-map/metro-map";
 import { Wrapper, Container } from "./Wrapper";
 import address from "./address";
+import passengers from "./graph/passenger_2021";
+
+import Temp from "./d3/Temp.js";
 
 let searchAddressToCoordinate;
 let navermaps;
@@ -79,12 +82,13 @@ function NaverMapComponent({ props }) {
 }
 
 function App() {
-  const [station, setStation] = useState("");
+  const [temp, setTemp] = useState({});
 
   const childToParent = (childData) => {
-    setStation(childData);
     searchAddressToCoordinate(address[childData]);
+    if (passengers[childData] !== undefined) setTemp(passengers[childData]);
   };
+
   return (
     <>
       <Container>
@@ -102,6 +106,7 @@ function App() {
           <MetroMap childToParent={childToParent} />
         </Wrapper>
       </Container>
+      <Temp temp={temp} />
     </>
   );
 }
