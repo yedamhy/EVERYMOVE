@@ -53,9 +53,9 @@ function Graph2({ children }) {
     left: '1.5%',
     width: '76%',
     height: '67.5%',
-    background: 'green 0% 0% no-repeat padding-box',
+    //background: 'green 0% 0% no-repeat padding-box',
     borderRadius: '24px' ,
-    opacity: '1',
+    opacity: '0.5',
     //text-align: center;
   };
   return <div style={style}>{children}</div>;

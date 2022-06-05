@@ -6,7 +6,8 @@ import { Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, Main,Container } f
 import address from "./address";
 import Header from './header.js';
 import Btn from "./btn.js";
-import Graph2_1 from './Graph2_1';
+import Temp from "./d3/Temp.js";
+import passengers from "./graph/passenger_2021";
 
 
 let searchAddressToCoordinate;
@@ -86,10 +87,12 @@ function NaverMapComponent({ props }) {
 function App() {
   const [station, setStation] = useState("");
   const[visible, setVisible] = useState(false);
+  const [temp, setTemp] = useState({});
   
   const childToParent = (childData) => {
-    setStation(childData);
     searchAddressToCoordinate(address[childData]);
+    if (passengers[childData] !== undefined) setTemp(passengers[childData]);
+  
   };
   return (
     <>
@@ -114,10 +117,13 @@ function App() {
         </MetroMapCon>
         <Graph1/>
         <Hide/>
-        <Graph2/>
+        <Graph2>
+          <Temp temp={temp} />
+        </Graph2>
         <StationInfo/>
         </Main>
       </Container>
+      
     </>
   );
 }
