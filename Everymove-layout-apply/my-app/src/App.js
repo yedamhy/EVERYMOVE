@@ -5,6 +5,8 @@ import MetroMap from "./metro-map/metro-map";
 import { Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, Main,Container } from "./Wrapper";
 import address from "./address";
 import Header from './header.js';
+import Btn from "./btn.js";
+import Graph2_1 from './Graph2_1';
 
 
 let searchAddressToCoordinate;
@@ -80,9 +82,11 @@ function NaverMapComponent({ props }) {
   );
 }
 
+
 function App() {
   const [station, setStation] = useState("");
-
+  const[visible, setVisible] = useState(false);
+  
   const childToParent = (childData) => {
     setStation(childData);
     searchAddressToCoordinate(address[childData]);
@@ -90,8 +94,11 @@ function App() {
   return (
     <>
       <Container>
+      
       <Header/>
+      
       <Main>
+        <Btn/>
         <Map>
           <RenderAfterNavermapsLoaded
             ncpClientId={"iynt9ev5fu"}

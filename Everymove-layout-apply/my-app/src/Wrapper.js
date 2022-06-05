@@ -61,6 +61,7 @@ function Graph2({ children }) {
   return <div style={style}>{children}</div>;
 }
 
+
 function StationInfo({ children }) {
   const style = {
     position: 'absolute',
@@ -84,7 +85,7 @@ function Hide({ children }) {
     width: '76%',
     height: '100%',
     background: 'white 0% 0% no-repeat padding-box',
-    borderRadius: '24px' ,
+    //borderRadius: '24px' ,
     opacity: '1',
     //text-align: center;
   };
