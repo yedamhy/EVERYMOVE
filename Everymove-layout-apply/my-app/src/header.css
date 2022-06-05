@@ -22,28 +22,14 @@
     color: white;
     background-color: rgb(57, 196, 150);
 }
-#topMenu{
-    display: flex;
-}
-#topMenu ul li{
-    list-style: none;
-    color: white;
-    background-color: rgb(57, 196, 150);
-    float: left;
-    line-height: 30px;
-    vertical-align: middle;
+.graph_2{
+    position: absolute;
+    top: 109.5%;
+    left: 1.5%;
+    width: 76%;
+    height: 67.5%;
+    background: green 0% 0% no-repeat padding-box;
+    border-radius: 24px ;
+    opacity: 1;
     text-align: center;
-}
-#topMenu .menuLink{
-    text-decoration: none;
-    color: white;
-    display: block;
-    width: 150px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 10px 10px 10px 10px;
-}
-#topMenu .menuLink:hover{
-    color: white;
-    background-color: rgb(28, 94, 72);
 }
