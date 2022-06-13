@@ -8,6 +8,7 @@ import Header from './header.js';
 import Btn from "./btn.js";
 import Temp from "./d3/Temp.js";
 import passengers from "./graph/passenger_2021";
+import { color } from "d3";
 
 
 let searchAddressToCoordinate;
@@ -100,6 +101,20 @@ function App() {
       
       <Header/>
       <SideBar>
+        <hr style={{
+          position: "relative",
+          top:'80%',
+          height:'0.5px',
+          border:'0px',
+          backgroundColor:'white',
+          }}/>
+          <p style={{
+          position: "relative",
+          top:'80%',
+          left:'2%',
+          fontSize: '10px',
+          color:'white',
+          }}>© 2022 EVERYMOVE</p>
       </SideBar>
       
       <Main>
