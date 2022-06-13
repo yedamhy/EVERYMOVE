@@ -5,7 +5,7 @@ function Header(){
     return (
         <header className="header">
             <div className='cont'>
-                <div ><a id='logo'>everymove</a></div>
+                <div ><a id='logo'>Everymove</a></div>
             </div>
             
             

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
 import MetroMap from "./metro-map/metro-map";
-import { Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, Main,Container } from "./Wrapper";
+import { Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, SideBar, Main,Container } from "./Wrapper";
 import address from "./address";
 import Header from './header.js';
 import Btn from "./btn.js";
@@ -99,9 +99,12 @@ function App() {
       <Container>
       
       <Header/>
+      <SideBar>
+      </SideBar>
       
       <Main>
-        <Btn/>
+        
+        
         <Map>
           <RenderAfterNavermapsLoaded
             ncpClientId={"iynt9ev5fu"}
@@ -115,13 +118,12 @@ function App() {
         <MetroMapCon>
           <MetroMap childToParent={childToParent} />
         </MetroMapCon>
-        <Graph1/>
         <Hide/>
-        <Graph2>
-          <Temp temp={temp} />
-        </Graph2>
+        <Graph1/>
+        <Graph2/>
         <StationInfo/>
         </Main>
+        <Btn/>
       </Container>
       
     </>
