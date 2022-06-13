@@ -1,0 +1,12 @@
+#HideGraph{
+    position: absolute;
+    z-index: 1000;
+    top: 423%;
+    left: 15%;
+    width: 65%;
+    height: 300%;
+    background: red 0% 0% no-repeat padding-box;
+    border-radius: 24px 24px 24px 24px ;
+    opacity: 1;
+    text-align: center;
+}

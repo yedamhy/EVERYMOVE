@@ -1,37 +1,56 @@
 import React from "react";
 import { useState } from "react";
-import Graph2_1 from "./Graph2_1";
+import HideGraph from "./HideGraph";
+import AboutUs from "./AboutUs";
 
 
 function Btn(){
 
     const[visible, setVisible] = useState(false);
 
-    const btnStyle = {
+    const btnStyle1 = {
         color: "white",
         fontWeight: "bold",
         background: "rgb(42, 153, 116)",
-        padding: ".375rem .75rem",
+        padding: ".400rem 1.5rem",
+        border: "1px solid rgb(42, 153, 116)",
+        borderRadius: ".25rem",
+        fontSize: "1rem",
+        lineHeight: 1.5,
+        position: 'absolute',
+        zIndex: "1000",
+        left: "2%",
+        top: '9vh',
+        borderRadius: '15px'
+    };
+    const btnStyle2 = {
+        color: "white",
+        fontWeight: "bold",
+        background: "rgb(42, 153, 116)",
+        padding: ".400rem 2.2rem",
         border: "1px solid rgb(42, 153, 116)",
         borderRadius: ".25rem",
         fontSize: "1rem",
         lineHeight: 1.5,
         position: 'relative',
         zIndex: "1000",
-        left: "89%",
-        top: '-7vh',
+        left: "2%",
+        top: '9vh',
+        borderRadius: '15px'
     };
     
     return(
         <div>
-            <button id="btn" style={btnStyle} 
+            <button id="btn1" style={btnStyle1} 
             onClick={ () => {
                 setVisible(!visible);
                 }}>
             {visible ? "관리자모드 off" : "관리자모드 on"}
-            
-        </button>
-            {visible && <Graph2_1/>}
+            </button>
+            {visible && <HideGraph/>}
+            <button id="btn2" style={btnStyle2} >
+            더 알아보기
+            </button>
         </div>
     )
 }
