@@ -106,7 +106,6 @@ function StationInfo({ children }) {
     background: "orange 0% 0% no-repeat padding-box",
     borderRadius: "24px",
     opacity: ".7",
-    fontSize: "13px",
     textAlign: "center",
   };
   return <div style={style}>{children}</div>;

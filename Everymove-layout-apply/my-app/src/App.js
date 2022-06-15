@@ -163,19 +163,31 @@ function App() {
           <Graph2 />
           <StationInfo>
             <p>{elev.forEach((element) => console.log(element))}</p>
-            <p>
+            <div
+              style={{
+                left: "2%",
+                fontSize: "10px",
+                lineHeight: "3px",
+              }}
+            >
               {elev.map((element) => {
                 return (
                   <>
-                    <p>{element.dnum}</p>
-                    <p>{element.inout}</p>
-                    <p>{element.floor}</p>
-                    <p>{element.location}</p>
-                    <p>{element.machine}</p>
+                    <div
+                      style={{
+                        border: "3px dotted black",
+                      }}
+                    >
+                      <p>{element.dnum}</p>
+                      <p>{element.inout}</p>
+                      <p>{element.floor}</p>
+                      <p>{element.location}</p>
+                      <p>{element.machine}</p>
+                    </div>
                   </>
                 );
               })}
-            </p>
+            </div>
           </StationInfo>
         </Main>
         <Btn />
