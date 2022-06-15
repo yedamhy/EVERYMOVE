@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>codingman</title>
+    <style>
+        .chart div {
+            font: 10px sans-serif;
+            background-color: rgb(4, 183, 106);
+            text-align: right;
+            padding: 3px;
+            margin: 3px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart"></div>
+
+    <h1>환승 장애 구역 데이터</h1>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        var data = [54022, 52737, 44472, 39266, 33519];
+
+        var div = d3.select(".chart").selectAll("div").data(data)
+            .enter().append("div")
+            .style("width", "0px")
+            .transition()
+            .duration(2000)
+            .style("width", function(d) {
+                return d * 0.01 + "px";
+            })
+            .text(function(d) {
+                return d;
+            });
+    </script>
+</body>
+
+</html>
