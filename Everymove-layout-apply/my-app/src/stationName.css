@@ -7,11 +7,11 @@
     top: 2%;
     left: 0%;
     border-radius: 15px ;
+    font-family: 'Nanum Gothic Coding', monospace;
     opacity: 1;
     background-color: white;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
-    font-family: 'Nanum Gothic', sans-serif;
-    color: black;
+    color: rgb(54, 54, 54);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
-import MetroMap from "./metro-map/metro-map";
+import MetroMap, {stationEcho}  from "./metro-map/metro-map";
 import {
   Graph1,
   Graph2,
@@ -13,6 +13,7 @@ import {
   Main,
   Container,
 } from "./Wrapper";
+import StationName from "./stationName";
 import address from "./address";
 import Header from "./header.js";
 import Btn from "./btn.js";
@@ -147,6 +148,7 @@ function App() {
         </SideBar>
 
         <Main>
+          <StationName station = {stationEcho}/>
           <Map>
             <RenderAfterNavermapsLoaded
               ncpClientId={"iynt9ev5fu"}

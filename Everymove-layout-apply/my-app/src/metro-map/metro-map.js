@@ -3,7 +3,7 @@ import { useState } from "react";
 import SubwayLineMap from "./Seoul_subway_linemap_ko.svg";
 import $ from "jquery";
 import svgPanZoom from "svg-pan-zoom";
-import StationName from "../stationName";
+
 
 
 export let stationEcho;
