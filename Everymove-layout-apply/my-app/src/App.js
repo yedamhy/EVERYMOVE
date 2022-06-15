@@ -2,18 +2,34 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
 import MetroMap from "./metro-map/metro-map";
-import { Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, SideBar, Main,Container } from "./Wrapper";
+import {
+  Graph1,
+  Graph2,
+  StationInfo,
+  MetroMapCon,
+  Hide,
+  Map,
+  SideBar,
+  Main,
+  Container,
+} from "./Wrapper";
 import address from "./address";
-import Header from './header.js';
+import Header from "./header.js";
 import Btn from "./btn.js";
 import Temp from "./d3/Temp.js";
 import passengers from "./graph/passenger_2021";
 import { color } from "d3";
-
+import elevAddress from "./metro-map/seoul_metro_elevators.csv";
+import { csv } from "d3-fetch";
 
 let searchAddressToCoordinate;
 let navermaps;
 
+const readCsv = async () => {
+  let elevFile = await csv(elevAddress);
+  return elevFile;
+};
+let elevFile = readCsv();
 function NaverMapComponent({ props }) {
   //const id = this.props.itemData.id;
   navermaps = window.naver.maps;
@@ -27,7 +43,6 @@ function NaverMapComponent({ props }) {
     lng: 126.970833,
   });
   const [zoom, setZoom] = useState(10);
-
   searchAddressToCoordinate = (address) => {
     navermaps.Service.geocode(
       {
@@ -84,63 +99,78 @@ function NaverMapComponent({ props }) {
   );
 }
 
-
 function App() {
-  const [station, setStation] = useState("");
-  const[visible, setVisible] = useState(false);
   const [temp, setTemp] = useState({});
-  
+  const [elev, setElev] = useState([]);
+  let elevArray;
+
   const childToParent = (childData) => {
+    elevArray = [];
     searchAddressToCoordinate(address[childData]);
     if (passengers[childData] !== undefined) setTemp(passengers[childData]);
-  
+    elevFile.then(function (data) {
+      for (var i = 0; i < data.length; i++) {
+        console.log(childData);
+        if (data[i].station === childData) {
+          elevArray.push(data[i]);
+        }
+      }
+    });
+    setElev(elevArray);
+    console.log(elevArray, elev);
   };
   return (
     <>
       <Container>
-      
-      <Header/>
-      <SideBar>
-        <hr style={{
-          position: "relative",
-          top:'80%',
-          height:'0.5px',
-          border:'0px',
-          backgroundColor:'white',
-          }}/>
-          <p style={{
-          position: "relative",
-          top:'80%',
-          left:'2%',
-          fontSize: '10px',
-          color:'white',
-          }}>© 2022 EVERYMOVE</p>
-      </SideBar>
-      
-      <Main>
-        
-        
-        <Map>
-          <RenderAfterNavermapsLoaded
-            ncpClientId={"iynt9ev5fu"}
-            error={<p>Maps Load Error</p>}
-            loading={<p>Maps Loading...</p>}
-            submodules={["geocoder"]}
+        <Header />
+        <SideBar>
+          <hr
+            style={{
+              position: "relative",
+              top: "80%",
+              height: "0.5px",
+              border: "0px",
+              backgroundColor: "white",
+            }}
+          />
+          <p
+            style={{
+              position: "relative",
+              top: "80%",
+              left: "2%",
+              fontSize: "10px",
+              color: "white",
+            }}
           >
-            <NaverMapComponent />
-          </RenderAfterNavermapsLoaded>
-        </Map>
-        <MetroMapCon>
-          <MetroMap childToParent={childToParent} />
-        </MetroMapCon>
-        <Hide/>
-        <Graph1/>
-        <Graph2/>
-        <StationInfo/>
+            © 2022 EVERYMOVE
+          </p>
+        </SideBar>
+
+        <Main>
+          <Map>
+            <RenderAfterNavermapsLoaded
+              ncpClientId={"iynt9ev5fu"}
+              error={<p>Maps Load Error</p>}
+              loading={<p>Maps Loading...</p>}
+              submodules={["geocoder"]}
+            >
+              <NaverMapComponent />
+            </RenderAfterNavermapsLoaded>
+          </Map>
+          <MetroMapCon>
+            <MetroMap childToParent={childToParent} />
+          </MetroMapCon>
+          <Hide />
+          <Graph1 />
+          <Graph2 />
+          <StationInfo>
+            <p>{elev[1]}</p>
+            <p>B</p>
+            <p>C</p>
+          </StationInfo>
         </Main>
-        <Btn/>
+        <Btn />
       </Container>
-      
     </>
   );
 }
