@@ -104,6 +104,7 @@ function App() {
   const [elev, setElev] = useState([]);
 
   const childToParent = (childData) => {
+    setElev([]);
     searchAddressToCoordinate(address[childData]);
     if (passengers[childData] !== undefined) setTemp(passengers[childData]);
     elevFile.then(function (data) {
@@ -166,10 +167,11 @@ function App() {
               {elev.map((element) => {
                 return (
                   <>
-                    <li>{element.dnum}</li>
-                    <li>{element.floor}</li>
-                    <li>{element.location}</li>
-                    <li>{element.machine}</li>
+                    <p>{element.dnum}</p>
+                    <p>{element.inout}</p>
+                    <p>{element.floor}</p>
+                    <p>{element.location}</p>
+                    <p>{element.machine}</p>
                   </>
                 );
               })}
