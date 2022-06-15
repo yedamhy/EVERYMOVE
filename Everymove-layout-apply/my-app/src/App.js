@@ -161,8 +161,19 @@ function App() {
           <Graph1 />
           <Graph2 />
           <StationInfo>
-            <p>{elev.forEach((element) => console.log(element.station))}</p>
-            <p>C</p>
+            <p>{elev.forEach((element) => console.log(element))}</p>
+            <p>
+              {elev.map((element) => {
+                return (
+                  <>
+                    <li>{element.dnum}</li>
+                    <li>{element.floor}</li>
+                    <li>{element.location}</li>
+                    <li>{element.machine}</li>
+                  </>
+                );
+              })}
+            </p>
           </StationInfo>
         </Main>
         <Btn />
