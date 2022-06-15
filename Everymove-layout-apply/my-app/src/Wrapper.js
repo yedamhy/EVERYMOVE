@@ -103,9 +103,9 @@ function StationInfo({ children }) {
     left: "67%",
     width: "16%",
     height: "40%",
-    background: "orange 0% 0% no-repeat padding-box",
+    background: " 0% 0% no-repeat padding-box",
     borderRadius: "24px",
-    opacity: ".7",
+    opacity: "1",
     textAlign: "center",
     overflow: "auto",
   };
