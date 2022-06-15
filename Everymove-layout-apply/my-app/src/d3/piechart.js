@@ -1,13 +1,30 @@
 import React, { useRef, useEffect, useState } from "react";
-import {Pie} from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 //import { renderMatches } from "react-router";
+import { csv } from "d3-fetch";
+import passengers from "../metro-map/passenger_2021.csv";
+
+const readCsv = async () => {
+  let file = await csv(passengers);
+  return file;
+};
+
+let psgr = readCsv();
 
 function PieChart({ temp }) {
-  let labels = Object.keys({temp}).map((e, index) => {
+  let labels = Object.keys({ temp }).map((e, index) => {
     return console.log(e, index); //label - 즉, passenger , disabled
-  }) ;
+  });
 
-  let numbers =  Object.values({temp}).map((e, index) => {
+  psgr.then(function (data) {
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i].station);
+      console.log(data[i].passenger);
+      console.log(data[i].disabled);
+    }
+  });
+
+  let numbers = Object.values({ temp }).map((e, index) => {
     return console.log(e, index); // 이용객 수 받아오기
   });
 
@@ -17,24 +34,18 @@ function PieChart({ temp }) {
       {
         data: numbers, //데이터
         backgroundColor: ["#F54EA2", "#41b6e6"], //컬러지정
-        hoverBackgroundColor: [
-          "#b9006e",
-          "#005792"
-        ]//hover 컬러 지정
-      }
-    ]
+        hoverBackgroundColor: ["#b9006e", "#005792"], //hover 컬러 지정
+      },
+    ],
   };
 
-return(
+  return (
     <div>
-        <Pie
-        data={state}/>
+      <Pie data={state} />
     </div>
-    );
+  );
 }
 export default PieChart;
-
-
 
 /*function PieChart({ temp }) {
     
@@ -59,7 +70,7 @@ export default PieChart;
     
   };*/
 
- /* useEffect (() => {
+/* useEffect (() => {
     setData([num_passenger, num_disabled]);
   }); */
 
@@ -96,7 +107,7 @@ export default PieChart;
       .attr("height", (value, index) =>50300000- yScale(value)); // svg 아래에 붙이기 위해서 svg viewBox 고려해 변경
   }, [data]);
 */
- /* return (
+/* return (
     <div>
         <Pie data = {state} options = {{
             tooltips: {
@@ -113,7 +124,7 @@ export default PieChart;
         }
         }} }} />
         </div> ); */
-    /*<div style={{ padding: "100px" }}>
+/*<div style={{ padding: "100px" }}>
       <svg ref={svgRef}>
         <g className="x-axis" />
         <g className="y-axis" />

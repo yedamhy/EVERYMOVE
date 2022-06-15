@@ -22,6 +22,8 @@ import { color } from "d3";
 import elevAddress from "./metro-map/seoul_metro_elevators.csv";
 import { csv } from "d3-fetch";
 
+import PieChart from "./d3/piechart.js";
+
 let searchAddressToCoordinate;
 let navermaps;
 
@@ -160,6 +162,7 @@ function App() {
           </MetroMapCon>
           <Hide />
           <Graph1 />
+          {/* <PieChart /> */}
           <Graph2 />
           <StationInfo>
             <p>{elev.forEach((element) => console.log(element))}</p>
