@@ -102,22 +102,19 @@ function NaverMapComponent({ props }) {
 function App() {
   const [temp, setTemp] = useState({});
   const [elev, setElev] = useState([]);
-  let elevArray;
 
   const childToParent = (childData) => {
-    elevArray = [];
     searchAddressToCoordinate(address[childData]);
     if (passengers[childData] !== undefined) setTemp(passengers[childData]);
     elevFile.then(function (data) {
       for (var i = 0; i < data.length; i++) {
-        console.log(childData);
         if (data[i].station === childData) {
-          elevArray.push(data[i]);
+          //console.log(data[i]);
+          let tempData = data[i];
+          setElev((elev) => [...elev, tempData]);
         }
       }
     });
-    setElev(elevArray);
-    console.log(elevArray, elev);
   };
   return (
     <>
@@ -164,8 +161,7 @@ function App() {
           <Graph1 />
           <Graph2 />
           <StationInfo>
-            <p>{elev[1]}</p>
-            <p>B</p>
+            <p>{elev.forEach((element) => console.log(element.station))}</p>
             <p>C</p>
           </StationInfo>
         </Main>
