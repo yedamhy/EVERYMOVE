@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
-import MetroMap, {stationEcho}  from "./metro-map/metro-map";
+import MetroMap, {stationEcho} from "./metro-map/metro-map";
 import {
   Graph1,
   Graph2,
@@ -22,7 +22,7 @@ import passengers from "./graph/passenger_2021";
 import { color } from "d3";
 import elevAddress from "./metro-map/seoul_metro_elevators.csv";
 import { csv } from "d3-fetch";
-
+import EveryLogo from "./EveryLogo.gif"
 import PieChart from "./d3/piechart.js";
 
 let searchAddressToCoordinate;
@@ -102,6 +102,7 @@ function NaverMapComponent({ props }) {
   );
 }
 
+
 function App() {
   const [temp, setTemp] = useState({});
   const [elev, setElev] = useState([]);
@@ -163,16 +164,18 @@ function App() {
             <MetroMap childToParent={childToParent} />
           </MetroMapCon>
           <Hide />
-          <Graph1 />
+          <Graph1></Graph1>
           {/* <PieChart /> */}
-          <Graph2 />
+          <Graph2 ></Graph2>
           <StationInfo>
             <p>{elev.forEach((element) => console.log(element))}</p>
             <div
               style={{
                 left: "2%",
-                fontSize: "10px",
+                fontSize: "12px",
                 lineHeight: "3px",
+                fontFamily: 'Nanum Gothic Coding',
+                fontWeight: "1px",
               }}
             >
               {elev.map((element) => {
@@ -180,7 +183,7 @@ function App() {
                   <>
                     <div
                       style={{
-                        border: "3px dotted black",
+                        borderBottom: "1px solid #6DB387",
                       }}
                     >
                       <p>{element.dnum}</p>
