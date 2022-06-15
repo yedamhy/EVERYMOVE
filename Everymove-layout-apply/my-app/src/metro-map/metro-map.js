@@ -3,11 +3,15 @@ import { useState } from "react";
 import SubwayLineMap from "./Seoul_subway_linemap_ko.svg";
 import $ from "jquery";
 import svgPanZoom from "svg-pan-zoom";
+import StationName from "../stationName";
+
+
+export let stationEcho;
 
 class MetroMap extends React.Component {
   constructor({ childToParent }) {
     super();
-
+    let clickedElement;
     let station;
     let obj;
     let beforeClickedElement;
@@ -17,7 +21,7 @@ class MetroMap extends React.Component {
         obj = svgPanZoom("#seoulSubwayMap");
         obj.setZoomScaleSensitivity(1);
         let svgDoc = $("#seoulSubwayMap")[0].getSVGDocument();
-
+        
         svgDoc.onmousemove = function (evt) {
           let clickedElement = evt.target;
 
@@ -26,7 +30,7 @@ class MetroMap extends React.Component {
           if ($(clickedElement).is("text") || $(clickedElement).is("tspan")) {
             if ($(clickedElement).parent().attr("id") != "legend_x5F_ko") {
               $(clickedElement).css("cursor", "pointer");
-              $(clickedElement).attr("font-size", "30px");
+              $(clickedElement).attr("font-size", "100px");
 
               if ($(clickedElement).is("tspan")) {
                 $(clickedElement).siblings().css("cursor", "pointer");
@@ -37,10 +41,12 @@ class MetroMap extends React.Component {
         };
 
         svgDoc.onclick = function (evt) {
-          let clickedElement = evt.target;
+          clickedElement = evt.target;
           if ($(clickedElement).is("text") || $(clickedElement).is("tspan")) {
             clickedElement.style.fontSize = "30px";
-            station = $(clickedElement).text();
+            station = $(clickedElement).text(); 
+            stationEcho = station;
+            console.log(station)
             childToParent(station);
             console.log("click", clickedElement, svgDoc);
             if (beforeClickedElement !== undefined) {
@@ -52,7 +58,7 @@ class MetroMap extends React.Component {
       });
     });
   }
-
+  
   render() {
     return (
       <div>
@@ -76,4 +82,6 @@ class MetroMap extends React.Component {
   }
 }
 
-export default MetroMap;
+
+
+export default MetroMap ;

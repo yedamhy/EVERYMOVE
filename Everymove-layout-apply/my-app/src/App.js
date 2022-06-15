@@ -1,18 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
-import MetroMap from "./metro-map/metro-map";
-import {
-  Graph1,
-  Graph2,
-  StationInfo,
-  MetroMapCon,
-  Hide,
-  Map,
-  SideBar,
-  Main,
-  Container,
-} from "./Wrapper";
+import MetroMap, {stationEcho} from "./metro-map/metro-map";
+import {Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, SideBar, Main,Container } from "./Wrapper";
+import StationName from "./stationName";
 import address from "./address";
 import Header from "./header.js";
 import Btn from "./btn.js";
@@ -103,7 +94,6 @@ function App() {
   const [temp, setTemp] = useState({});
   const [elev, setElev] = useState([]);
   let elevArray;
-
   const childToParent = (childData) => {
     elevArray = [];
     searchAddressToCoordinate(address[childData]);
@@ -119,9 +109,49 @@ function App() {
     setElev(elevArray);
     console.log(elevArray, elev);
   };
+  const test = '0000';
   return (
     <>
       <Container>
+      <Header/>      
+      <SideBar>
+        <hr style={{
+          position: "relative",
+          top:'80%',
+          height:'0.5px',
+          border:'0px',
+          backgroundColor:'white',
+          }}/>
+          <p style={{
+          position: "relative",
+          top:'80%',
+          left:'2%',
+          fontSize: '10px',
+          color:'white',
+          }}>© 2022 EVERYMOVE</p>
+      </SideBar>
+      
+      <Main>
+        
+        <StationName station = {stationEcho}/>
+        <Map>
+          <RenderAfterNavermapsLoaded
+            ncpClientId={"iynt9ev5fu"}
+            error={<p>Maps Load Error</p>}
+            loading={<p>Maps Loading...</p>}
+            submodules={["geocoder"]}
+          >
+            <NaverMapComponent />
+          </RenderAfterNavermapsLoaded>
+        </Map>
+        <MetroMapCon>
+          <MetroMap childToParent={childToParent} />
+        </MetroMapCon>
+        <Hide/>
+        
+        <Graph1/>
+        <Graph2><Temp temp = {temp}/></Graph2>
+        <StationInfo/>
         <Header />
         <SideBar>
           <hr

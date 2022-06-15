@@ -83,6 +83,7 @@ function Graph1({ children }) {
   return <div style={style}>{children}</div>;
 }
 
+
 function Graph2({ children }) {
   const style = {
     position: 'absolute',
@@ -108,7 +109,7 @@ function StationInfo({ children }) {
     height: '40%',
     background: 'orange 0% 0% no-repeat padding-box',
     borderRadius: '24px' ,
-    opacity: '1',
+    opacity: '.7',
     //text-align: center,
   };
   return <div style={style}>{children}</div>;
@@ -132,4 +133,4 @@ function Hide({ children }) {
 
 
 
-export {Container, Main, SideBar, MetroMapCon, Map, Graph1, Graph2, StationInfo, Hide,     };
+export { Container, Main, SideBar, MetroMapCon, Map, Graph1, Graph2, StationInfo, Hide   };
