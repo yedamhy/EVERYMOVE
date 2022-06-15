@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
-import MetroMap from "./metro-map/metro-map";
-import { Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, SideBar, Main,Container } from "./Wrapper";
+import MetroMap, {stationEcho} from "./metro-map/metro-map";
+import {Graph1, Graph2, StationInfo, MetroMapCon, Hide, Map, SideBar, Main,Container } from "./Wrapper";
+import StationName from "./stationName";
 import address from "./address";
 import Header from './header.js';
 import Btn from "./btn.js";
@@ -89,17 +90,16 @@ function App() {
   const [station, setStation] = useState("");
   const[visible, setVisible] = useState(false);
   const [temp, setTemp] = useState({});
-  
   const childToParent = (childData) => {
     searchAddressToCoordinate(address[childData]);
     if (passengers[childData] !== undefined) setTemp(passengers[childData]);
   
   };
+  const test = '0000';
   return (
     <>
       <Container>
-      
-      <Header/>
+      <Header/>      
       <SideBar>
         <hr style={{
           position: "relative",
@@ -119,7 +119,7 @@ function App() {
       
       <Main>
         
-        
+        <StationName station = {stationEcho}/>
         <Map>
           <RenderAfterNavermapsLoaded
             ncpClientId={"iynt9ev5fu"}
@@ -134,8 +134,9 @@ function App() {
           <MetroMap childToParent={childToParent} />
         </MetroMapCon>
         <Hide/>
+        
         <Graph1/>
-        <Graph2/>
+        <Graph2><Temp temp = {temp}/></Graph2>
         <StationInfo/>
         </Main>
         <Btn/>

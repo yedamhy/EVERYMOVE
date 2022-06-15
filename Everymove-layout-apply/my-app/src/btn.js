@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import HideGraph from "./HideGraph";
-import AboutUs from "./AboutUs";
+
 
 
 function Btn(){

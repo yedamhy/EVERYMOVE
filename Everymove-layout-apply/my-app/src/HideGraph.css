@@ -1,10 +1,10 @@
 #HideGraph{
     position: absolute;
     z-index: 1000;
-    top: 423%;
+    top: 57.5vh;
     left: 15%;
     width: 65%;
-    height: 300%;
+    height: 320%;
     background: red 0% 0% no-repeat padding-box;
     border-radius: 24px 24px 24px 24px ;
     opacity: 1;
