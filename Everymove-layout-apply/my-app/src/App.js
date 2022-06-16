@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
-import MetroMap, {stationEcho} from "./metro-map/metro-map";
+import MetroMap, { stationEcho } from "./metro-map/metro-map";
 import {
   Graph1,
   Graph2,
@@ -22,11 +22,11 @@ import passengers from "./graph/passenger_2021";
 import { color } from "d3";
 import elevAddress from "./metro-map/seoul_metro_elevators.csv";
 import { csv } from "d3-fetch";
-import EveryLogo from "./EveryLogo.gif"
+import EveryLogo from "./EveryLogo.gif";
 import PieChart from "./d3/piechart.js";
 import Top5 from "./d3/Top5";
-import Pie1 from "./d3/pie1"
-import passengersNum from "./metro-map/passenger_2021.csv"
+import Pie1 from "./d3/pie1";
+import passengersNum from "./metro-map/passenger_2021.csv";
 let searchAddressToCoordinate;
 let navermaps;
 
@@ -111,12 +111,12 @@ function NaverMapComponent({ props }) {
   );
 }
 
-
 function App() {
   const [temp, setTemp] = useState({});
   const [elev, setElev] = useState([]);
   const [pieData, setPieData] = useState({ passenger: 0, disabled: 0 });
   const childToParent = (childData) => {
+    console.log(childData);
     setElev([]);
     searchAddressToCoordinate(address[childData]);
     if (passengers[childData] !== undefined) setTemp(passengers[childData]);
@@ -148,8 +148,7 @@ function App() {
       }
     });
   };
-  
-  
+
   return (
     <>
       <Container>
@@ -178,7 +177,7 @@ function App() {
         </SideBar>
 
         <Main>
-          <StationName station = {stationEcho}/>
+          <StationName station={stationEcho} />
           <Map>
             <RenderAfterNavermapsLoaded
               ncpClientId={"iynt9ev5fu"}
@@ -194,11 +193,10 @@ function App() {
           </MetroMapCon>
           <Hide />
           <Graph1>
-            <Top5/>
+            <Top5 childToParent={childToParent} />
           </Graph1>
-        
-          <Graph2 > 
-            
+
+          <Graph2>
             {/* <PieChart 
               pieData={pieData} 
               width={200}
@@ -214,7 +212,7 @@ function App() {
                 left: "2%",
                 fontSize: "12px",
                 lineHeight: "3px",
-                fontFamily: 'Nanum Gothic Coding',
+                fontFamily: "Nanum Gothic Coding",
                 fontWeight: "1px",
               }}
             >

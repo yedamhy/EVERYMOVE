@@ -1,4 +1,4 @@
-﻿line,station,machine,inout,num,dnum,floor,location
+line,station,machine,inout,num,dnum,floor,location
 1,동대문,E/L,내부,1,0000-906,B2(승)~B1(대),상행 10-4
 1,동대문,E/L,내부,2,0000-907,B2(승)~B1(대),하행 2-1
 1,동대문,E/L,외부,1,0000-905,B1(대)~지상,6번 출구측
