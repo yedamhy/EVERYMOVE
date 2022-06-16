@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from "react-naver-maps";
 import MetroMap, {stationEcho} from "./metro-map/metro-map";
 import {
@@ -25,7 +25,8 @@ import { csv } from "d3-fetch";
 import EveryLogo from "./EveryLogo.gif"
 import PieChart from "./d3/piechart.js";
 import Top5 from "./d3/Top5";
-
+import Pie1 from "./d3/pie1"
+import passengersNum from "./metro-map/passenger_2021.csv"
 let searchAddressToCoordinate;
 let navermaps;
 
@@ -34,6 +35,13 @@ const readCsv = async () => {
   return elevFile;
 };
 let elevFile = readCsv();
+
+const readCsv2 = async () => {
+  let file = await csv(passengersNum);
+  return file;
+};
+let psgr = readCsv2();
+
 function NaverMapComponent({ props }) {
   //const id = this.props.itemData.id;
   navermaps = window.naver.maps;
@@ -107,7 +115,7 @@ function NaverMapComponent({ props }) {
 function App() {
   const [temp, setTemp] = useState({});
   const [elev, setElev] = useState([]);
-
+  const [pieData, setPieData] = useState({ passenger: 0, disabled: 0 });
   const childToParent = (childData) => {
     setElev([]);
     searchAddressToCoordinate(address[childData]);
@@ -121,7 +129,27 @@ function App() {
         }
       }
     });
+    psgr.then(function (dataset) {
+      for (let i = 0; i < dataset.length; i++) {
+        if (dataset[i].station === stationEcho) {
+          console.log(stationEcho, dataset[i]);
+          let tempPassenger = dataset[i].passenger;
+          let tempDisabled = dataset[i].disabled;
+          let tempDataset = {
+            passenger: tempPassenger,
+            disabled: tempDisabled,
+          };
+
+          setPieData((pieData) => ({
+            ...pieData,
+            ...tempDataset,
+          }));
+        }
+      }
+    });
   };
+  
+  
   return (
     <>
       <Container>
@@ -168,8 +196,17 @@ function App() {
           <Graph1>
             <Top5/>
           </Graph1>
-          {/* <PieChart /> */}
-          <Graph2 ></Graph2>
+        
+          <Graph2 > 
+            
+            {/* <PieChart 
+              pieData={pieData} 
+              width={200}
+              height={200}
+              innerRadius={40}
+              outerRadius={100}/> */}
+          </Graph2>
+          {console.log(pieData)}
           <StationInfo>
             <p>{elev.forEach((element) => console.log(element))}</p>
             <div

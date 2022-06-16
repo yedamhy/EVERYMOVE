@@ -88,7 +88,7 @@ function Graph2({ children }) {
     left: "50%",
     width: "16%",
     height: "40%",
-    background: "green 0% 0% no-repeat padding-box",
+    background: " 0% 0% no-repeat padding-box",
     borderRadius: "24px",
     opacity: ".5",
     //text-align: center;
