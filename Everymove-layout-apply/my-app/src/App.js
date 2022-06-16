@@ -195,18 +195,10 @@ function App() {
           <Graph1>
             <Top5 childToParent={childToParent} />
           </Graph1>
-
           <Graph2>
-            {/* <PieChart 
-              pieData={pieData} 
-              width={200}
-              height={200}
-              innerRadius={40}
-              outerRadius={100}/> */}
+            <PieChart pieData={pieData} />
           </Graph2>
-          {console.log(pieData)}
           <StationInfo>
-            <p>{elev.forEach((element) => console.log(element))}</p>
             <div
               style={{
                 left: "2%",
