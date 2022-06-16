@@ -24,6 +24,7 @@ import elevAddress from "./metro-map/seoul_metro_elevators.csv";
 import { csv } from "d3-fetch";
 import EveryLogo from "./EveryLogo.gif"
 import PieChart from "./d3/piechart.js";
+import Top5 from "./d3/Top5";
 
 let searchAddressToCoordinate;
 let navermaps;
@@ -164,7 +165,9 @@ function App() {
             <MetroMap childToParent={childToParent} />
           </MetroMapCon>
           <Hide />
-          <Graph1></Graph1>
+          <Graph1>
+            <Top5/>
+          </Graph1>
           {/* <PieChart /> */}
           <Graph2 ></Graph2>
           <StationInfo>
