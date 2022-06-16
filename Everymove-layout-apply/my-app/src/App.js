@@ -194,6 +194,7 @@ function App() {
           <Hide />
           <Graph1>
             <Top5 childToParent={childToParent} />
+            <pre>                      장애인 이용객 수 top6</pre>
           </Graph1>
           <Graph2>
             <PieChart pieData={pieData} />
