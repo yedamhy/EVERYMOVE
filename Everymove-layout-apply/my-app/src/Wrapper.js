@@ -90,7 +90,7 @@ function Graph2({ children }) {
     height: "40%",
     background: " 0% 0% no-repeat padding-box",
     borderRadius: "24px",
-    opacity: ".5",
+    opacity: "1",
     //text-align: center;
   };
   return <div style={style}>{children}</div>;
