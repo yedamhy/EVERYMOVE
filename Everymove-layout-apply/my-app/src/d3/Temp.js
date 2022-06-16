@@ -3,20 +3,25 @@ import { select, axisBottom, axisRight, scaleLinear, scaleBand } from "d3";
 import * as d3 from "d3";
 import { axisLeft } from "d3";
 
+const width = 200;
+const height = 100
 function Temp({ temp }) {
-  const [data, setData] = useState([25]);
+  const [data, setData] = useState([0, 0]);
   
   let station = temp.station;
   let num_passenger = temp.passenger ;
   let num_disabled = temp.disabled ;
   let num_rate = Math.round(temp.passenger / temp.disabled);
-
+  console.log(num_disabled, num_passenger)
+  
   const svgRef = useRef();
   useEffect(() => {
 
-    setData([num_passenger, num_disabled]);
+    const svg = select(svgRef.current)
+      .append("svg")
+        .attr("width",width)
+        .attr("height",height);
 
-    const svg = select(svgRef.current);
     // scale
     const xScale = scaleBand()
       .domain(data.map((value, index) => index))
@@ -44,8 +49,9 @@ function Temp({ temp }) {
   }, [data]);
 
   return (
-    <div style={{ padding: "100px" }}>
+    <div style={{ padding: "20px" }}>
       <svg ref={svgRef}>
+        {data}
         <g className="x-axis" />
         <g className="y-axis" />
       </svg>

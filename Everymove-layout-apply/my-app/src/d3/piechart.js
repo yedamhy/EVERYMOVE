@@ -2,21 +2,22 @@ import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
 const PieChart = (props) => {
+  console.log({props});
   const ref = useRef(null);
-  const cache = useRef(props.dataset);
+  const cache = useRef({props}.props.pieData);
   const createPie = d3
     .pie()
-    .value((d) => d.value)
-    .sort(null);
+    //.value((d) => d.value)
+    //.sort(null);
   const createArc = d3
     .arc()
-    .innerRadius(props.innerRadius)
-    .outerRadius(props.outerRadius);
+    .innerRadius({props}.props.innerRadius)
+    .outerRadius({props}.props.outerRadius);
   const colors = d3.scaleOrdinal(["##8a89a6", "#a05d56"]);
   const format = d3.format(",");
-
+console.log({props}.props.innerRadius)
   useEffect(() => {
-    const data = createPie(props.dataset);
+    const data = createPie({props}.props.pieData);
     const prevData = createPie(cache.current);
     const group = d3.select(ref.current);
     const groupWithData = group.selectAll("g.arc").data(data);
@@ -61,14 +62,14 @@ const PieChart = (props) => {
         return (t) => d3.select(nodes[i]).text(format(interpolator(t).value));
       });
 
-    cache.current = props.dataset;
-  }, [props.data]);
+    cache.current = {props}.dataset;
+  }, [{props}.data]);
 
   return (
-    <svg width={props.width} height={props.height}>
+    <svg width={{props}.width} height={{props}.height}>
       <g
         ref={ref}
-        transform={`translate(${props.outerRadius} ${props.outerRadius})`}
+        transform={`translate(${{props}.outerRadius} ${{props}.outerRadius})`}
       />
     </svg>
   );
