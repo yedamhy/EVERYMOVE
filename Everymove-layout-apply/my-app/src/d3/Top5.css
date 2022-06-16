@@ -1,0 +1,19 @@
+.xAxis path,
+.xAxis line {
+    display: none;
+}
+
+.yAxis path {
+    display: none;
+}
+
+.yAxis line {
+    stroke-opacity: 0.3;
+    transform: translate(1px, 0px);
+}
+
+text {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Nanum Gothic', monospace;
+}

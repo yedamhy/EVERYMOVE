@@ -69,13 +69,13 @@ function Map({ children }) {
 function Graph1({ children }) {
   const style = {
     position: "absolute",
-    top: "50%",
+    top: "56%",
     left: "1%",
     width: "48%",
     height: "40%",
-    background: "orange 0% 0% no-repeat padding-box",
+    background: "0% 0% no-repeat padding-box",
     borderRadius: "24px",
-    opacity: "0.3",
+    opacity: "1",
     //text-align: center,
   };
   return <div style={style}>{children}</div>;
