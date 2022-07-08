@@ -25,3 +25,7 @@ Clean up & Synchronization
 
 [2022-06-03 12:21] 
 Update Line 1
+
+[2022-06-16]
+distribute 
+  - https://cincolunes.github.io/Everymove-github-pages/
